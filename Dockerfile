@@ -8,6 +8,7 @@ RUN npm run build
 
 # ── Build backend ───────────────────────────────────────────────────────────
 FROM node:20-alpine AS builder-back
+RUN apk add --no-cache python3 make g++
 WORKDIR /back
 COPY back/package*.json ./
 RUN npm ci
