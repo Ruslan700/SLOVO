@@ -1,0 +1,15 @@
+:root {
+  --bg-dark: #1a1a2e;
+  --bg-medium: #16213e;
+  --bg-light: #0f3460;
+  --accent-primary: #e94560;
+  --accent-secondary: #533483;
+  --txt-primary: #eaeaea;
+  --txt-secondary: #a0a0b0;
+  --txt-muted: #606070;
+  --border-color: #2a2a4a;
+  --input-bg: #0d0d1a;
+
+  --page-header: 100;
+  --page-footer: 10;
+}
