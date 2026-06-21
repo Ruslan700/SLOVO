@@ -309,35 +309,6 @@ const ModalClose = styled.button`
   cursor: pointer;
 `;
 
-const UserList = styled.div`
-  overflow-y: auto;
-  display: flex;
-  flex-direction: column;
-  gap: 0.4rem;
-`;
-
-const UserItem = styled.button`
-  display: flex;
-  align-items: center;
-  gap: 1.2rem;
-  padding: 1rem 1.2rem;
-  background: transparent;
-  border: none;
-  border-radius: 0.6rem;
-  cursor: pointer;
-  text-align: left;
-  color: var(--txt-primary);
-  transition: background 0.15s;
-
-  &:hover {
-    background: rgba(255, 255, 255, 0.06);
-  }
-`;
-
-const UserName = styled.span`
-  font-size: 1.4rem;
-  font-weight: 500;
-`;
 
 // ─── ConversationRow ───────────────────────────────────────────────────────
 
