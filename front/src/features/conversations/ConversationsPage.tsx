@@ -38,13 +38,18 @@ const MessengerWrapper = styled.div`
   z-index: 10;
 `;
 
-const LeftPanel = styled.aside`
+const LeftPanel = styled.aside<{ $hidden?: boolean }>`
   width: 30rem;
   flex-shrink: 0;
   display: flex;
   flex-direction: column;
   background: var(--bg-medium);
   border-right: 1px solid var(--border-color);
+
+  @media (max-width: 768px) {
+    width: 100%;
+    display: ${({ $hidden }) => ($hidden ? 'none' : 'flex')};
+  }
 `;
 
 const PanelHeader = styled.div`
@@ -155,11 +160,16 @@ const UnreadBadge = styled.span`
   flex-shrink: 0;
 `;
 
-const RightPanel = styled.main`
+const RightPanel = styled.main<{ $hidden?: boolean }>`
   flex: 1;
   display: flex;
   flex-direction: column;
   min-width: 0;
+
+  @media (max-width: 768px) {
+    width: 100%;
+    display: ${({ $hidden }) => ($hidden ? 'none' : 'flex')};
+  }
 `;
 
 const Placeholder = styled.div`
@@ -185,6 +195,23 @@ const ChatHeader = styled.div`
   border-bottom: 1px solid var(--border-color);
   background: var(--bg-medium);
   flex-shrink: 0;
+  display: flex;
+  align-items: center;
+`;
+
+const BackButton = styled.button`
+  display: none;
+  background: transparent;
+  border: none;
+  color: var(--txt-primary);
+  font-size: 2.4rem;
+  cursor: pointer;
+  padding: 0 1rem 0 0;
+  line-height: 1;
+
+  @media (max-width: 768px) {
+    display: block;
+  }
 `;
 
 const ChatHeaderName = styled.h3`
@@ -337,9 +364,10 @@ const ConversationRow = ({ conv, active, onClick }: ConversationRowProps) => {
 type ChatPanelProps = {
   conversation: Conversation;
   currentUserId: number;
+  onBack: () => void;
 };
 
-const ChatPanel = ({ conversation, currentUserId }: ChatPanelProps) => {
+const ChatPanel = ({ conversation, currentUserId, onBack }: ChatPanelProps) => {
   const dispatch = useAppDispatch();
   const messages = useAppSelector(selectMessages(conversation.id));
   const [text, setText] = useState('');
@@ -365,6 +393,7 @@ const ChatPanel = ({ conversation, currentUserId }: ChatPanelProps) => {
   return (
     <ChatWrapper>
       <ChatHeader>
+        <BackButton onClick={onBack}>‹</BackButton>
         <ChatHeaderName>{conversation.otherUser.name}</ChatHeaderName>
       </ChatHeader>
       <MessagesList>
@@ -555,6 +584,7 @@ const ConversationsPage = () => {
   const activeId = useAppSelector(selectActiveId);
   const activeConversation = useAppSelector(selectActiveConversation);
   const [showModal, setShowModal] = useState(false);
+  const isMobileChat = activeId !== null;
 
   useEffect(() => {
     const numId = id ? parseInt(id, 10) : null;
@@ -601,7 +631,7 @@ const ConversationsPage = () => {
 
   return (
     <MessengerWrapper>
-      <LeftPanel>
+      <LeftPanel $hidden={isMobileChat}>
         <PanelHeader>
           <PanelTitle>Сообщения</PanelTitle>
           <NewButton onClick={handleOpenModal} title="Новый диалог">+</NewButton>
@@ -618,9 +648,13 @@ const ConversationsPage = () => {
         </ConversationList>
       </LeftPanel>
 
-      <RightPanel>
+      <RightPanel $hidden={!isMobileChat}>
         {activeConversation && currentUser ? (
-          <ChatPanel conversation={activeConversation} currentUserId={currentUser.id} />
+          <ChatPanel
+            conversation={activeConversation}
+            currentUserId={currentUser.id}
+            onBack={() => navigate('/conversations')}
+          />
         ) : (
           <Placeholder>Выберите диалог</Placeholder>
         )}

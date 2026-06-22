@@ -17,6 +17,10 @@ const HeaderWrapper = styled.header`
   justify-content: space-between;
   padding: 0 4rem;
   z-index: var(--page-header);
+
+  @media (max-width: 768px) {
+    padding: 0 1.6rem;
+  }
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
 `;
 

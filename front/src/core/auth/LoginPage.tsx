@@ -11,6 +11,11 @@ const PageContainer = styled.div`
   justify-content: center;
   padding: 6rem 2rem 2rem;
   background: linear-gradient(135deg, var(--bg-dark) 0%, var(--bg-medium) 100%);
+
+  @media (max-width: 768px) {
+    align-items: flex-start;
+    padding: 4rem 1.6rem 2rem;
+  }
 `;
 
 const LoginCard = styled.div`
@@ -18,6 +23,10 @@ const LoginCard = styled.div`
   border: 1px solid var(--border-color);
   border-radius: 0.8rem;
   padding: 3rem;
+
+  @media (max-width: 768px) {
+    padding: 2rem 1.6rem;
+  }
   width: 100%;
   max-width: 40rem;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);

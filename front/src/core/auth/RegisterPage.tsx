@@ -11,6 +11,11 @@ const PageContainer = styled.div`
   justify-content: center;
   padding: 6rem 2rem 2rem;
   background: linear-gradient(135deg, var(--bg-dark) 0%, var(--bg-medium) 100%);
+
+  @media (max-width: 768px) {
+    align-items: flex-start;
+    padding: 4rem 1.6rem 2rem;
+  }
 `;
 
 const RegisterCard = styled.div`
@@ -21,6 +26,10 @@ const RegisterCard = styled.div`
   width: 100%;
   max-width: 40rem;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+
+  @media (max-width: 768px) {
+    padding: 2rem 1.6rem;
+  }
 `;
 
 const CardTitle = styled.h2`
