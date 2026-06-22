@@ -228,6 +228,10 @@ const MessagesList = styled.div`
   display: flex;
   flex-direction: column;
   gap: 0.8rem;
+
+  @media (max-width: 768px) {
+    padding: 1rem 1.2rem;
+  }
 `;
 
 const MessageBubble = styled.div<{ $mine: boolean }>`
@@ -250,6 +254,10 @@ const InputForm = styled.form`
   border-top: 1px solid var(--border-color);
   background: var(--bg-medium);
   flex-shrink: 0;
+
+  @media (max-width: 768px) {
+    padding: 1rem 1.2rem;
+  }
 `;
 
 const MessageInput = styled.input`
@@ -311,7 +319,7 @@ const ModalCard = styled.div`
   border: 1px solid var(--border-color);
   border-radius: 0.8rem;
   padding: 2rem;
-  width: 32rem;
+  width: min(32rem, calc(100vw - 3.2rem));
   max-height: 50rem;
   display: flex;
   flex-direction: column;

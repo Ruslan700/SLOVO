@@ -13,8 +13,8 @@ const PageContainer = styled.div`
   background: linear-gradient(135deg, var(--bg-dark) 0%, var(--bg-medium) 100%);
 
   @media (max-width: 768px) {
-    align-items: flex-start;
-    padding: 4rem 1.6rem 2rem;
+    align-items: center;
+    padding: 2rem 1.6rem;
   }
 `;
 

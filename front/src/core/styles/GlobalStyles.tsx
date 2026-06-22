@@ -9,10 +9,13 @@ const GlobalStyles = createGlobalStyle`
 
   html {
     font-size: 62.5%;
+    overflow-x: hidden;
   }
 
   body {
     box-sizing: border-box;
+    overflow-x: hidden;
+    max-width: 100vw;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     font-size: 1.6rem;
     font-weight: 400;
